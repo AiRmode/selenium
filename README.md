@@ -150,7 +150,7 @@ For an express build of the binaries we release, run the following from
 the directory containing the `Rakefile`:
 
 ```sh
-./go release
+./go prep-release-zip
 ```
 
 All build output is placed under the `build` directory. The output can
