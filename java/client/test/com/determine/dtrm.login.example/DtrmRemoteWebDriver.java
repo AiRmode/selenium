@@ -6,11 +6,11 @@ import org.openqa.selenium.remote.HttpCommandExecutor;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.URL;
-import java.util.HashMap;
+import java.util.Map;
 
 public class DtrmRemoteWebDriver extends RemoteWebDriver {
 
-  public DtrmRemoteWebDriver(URL url, DesiredCapabilities capability, HashMap<String, CommandInfo> additionalCommands) {
+  public DtrmRemoteWebDriver(URL url, DesiredCapabilities capability, Map<String, CommandInfo> additionalCommands) {
     super(new HttpCommandExecutor(additionalCommands, url), capability);
   }
 

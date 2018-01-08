@@ -31,7 +31,7 @@ public class SeleniumStandaloneServerTest {
   }
 
   private void execute(final DesiredCapabilities capability) throws MalformedURLException {
-    HashMap<String, CommandInfo> additionalCommands = new HashMap<>();
+    Map<String, CommandInfo> additionalCommands = new HashMap<>();
     additionalCommands.put("dtrmLogin", new CommandInfo("/session/:sessionId/dtrmLogin", HttpMethod.POST));
 
     DtrmRemoteWebDriver driver = new DtrmRemoteWebDriver(new URL("http://localhost:4444/wd/hub"), capability, additionalCommands);
