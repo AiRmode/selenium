@@ -1,33 +1,14 @@
 package org.openqa.selenium.remote.server;
 
-import static org.openqa.selenium.remote.Dialect.OSS;
-
 import com.google.common.base.Preconditions;
 import com.google.common.base.StandardSystemProperty;
 import com.google.common.collect.ImmutableMap;
-
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.ImmutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.io.TemporaryFilesystem;
-import org.openqa.selenium.remote.Augmenter;
-import org.openqa.selenium.remote.Command;
-import org.openqa.selenium.remote.CommandCodec;
-import org.openqa.selenium.remote.CommandExecutor;
-import org.openqa.selenium.remote.Dialect;
-import org.openqa.selenium.remote.DriverCommand;
-import org.openqa.selenium.remote.ProtocolHandshake;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.remote.Response;
-import org.openqa.selenium.remote.ResponseCodec;
-import org.openqa.selenium.remote.SessionId;
-import org.openqa.selenium.remote.http.HttpClient;
-import org.openqa.selenium.remote.http.HttpRequest;
-import org.openqa.selenium.remote.http.HttpResponse;
-import org.openqa.selenium.remote.http.JsonHttpCommandCodec;
-import org.openqa.selenium.remote.http.JsonHttpResponseCodec;
-import org.openqa.selenium.remote.http.W3CHttpCommandCodec;
-import org.openqa.selenium.remote.http.W3CHttpResponseCodec;
+import org.openqa.selenium.remote.*;
+import org.openqa.selenium.remote.http.*;
 import org.openqa.selenium.remote.internal.ApacheHttpClient;
 
 import java.io.File;
@@ -38,6 +19,8 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static org.openqa.selenium.remote.Dialect.OSS;
 
 /**
  * Abstract class designed to do things like protocol conversion.
@@ -74,6 +57,10 @@ public abstract class RemoteSession implements ActiveSession {
     this.driver = new Augmenter().augment(new RemoteWebDriver(
         executor,
         new ImmutableCapabilities(getCapabilities())));
+  }
+
+  public SessionCodec getCodec() {
+    return codec;
   }
 
   @Override

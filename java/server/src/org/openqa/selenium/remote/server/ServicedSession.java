@@ -18,8 +18,6 @@
 package org.openqa.selenium.remote.server;
 
 
-import static java.util.concurrent.TimeUnit.SECONDS;
-
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.SessionNotCreatedException;
 import org.openqa.selenium.net.PortProber;
@@ -32,6 +30,8 @@ import org.openqa.selenium.remote.server.jmx.JMXHelper;
 import org.openqa.selenium.remote.server.jmx.ManagedService;
 import org.openqa.selenium.remote.service.DriverService;
 
+import javax.management.MalformedObjectNameException;
+import javax.management.ObjectName;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.URL;
@@ -42,8 +42,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 
-import javax.management.MalformedObjectNameException;
-import javax.management.ObjectName;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 @ManagedService
 public class ServicedSession extends RemoteSession {
@@ -62,6 +61,10 @@ public class ServicedSession extends RemoteSession {
     this.service = service;
 
     new JMXHelper().register(this);
+  }
+
+  public DriverService getService() {
+    return service;
   }
 
   @Override

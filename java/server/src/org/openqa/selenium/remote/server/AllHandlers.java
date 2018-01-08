@@ -38,6 +38,7 @@ import java.util.stream.Stream;
 
 class AllHandlers {
 
+  public static final String DTRM_LOGIN = "/dtrmLogin";
   private final Json json;
   private final NewSessionPipeline pipeline;
   private final ActiveSessions allSessions;
@@ -67,8 +68,7 @@ class AllHandlers {
   public CommandHandler match(HttpServletRequest req) {
     String path = Strings.isNullOrEmpty(req.getPathInfo()) ? "/" : req.getPathInfo();
 
-    HttpMethod httpMethod = HttpMethod.valueOf(req.getMethod());
-    Optional<? extends CommandHandler> additionalHandler = additionalHandlers.get(httpMethod)
+    Optional<? extends CommandHandler> additionalHandler = additionalHandlers.get(HttpMethod.valueOf(req.getMethod()))
       .stream()
       .map(bundle ->
         bundle.apply(req.getPathInfo()))
@@ -92,6 +92,9 @@ class AllHandlers {
       ActiveSession session = allSessions.get(id);
       if (session == null) {
         return new NoSessionHandler(json, id);
+      } else if (req.getPathInfo().endsWith(DTRM_LOGIN)) {
+        ServicedSession servicedSession = (ServicedSession) session;
+        session = new DtrmServicedSession(servicedSession);
       }
       return session;
     }
@@ -99,7 +102,9 @@ class AllHandlers {
     return new NoHandler(json);
   }
 
-  private <H extends CommandHandler> Function<String, CommandHandler> handler(String template, Class<H> handler) {//add here
+  private <H extends CommandHandler> Function<String, CommandHandler> handler(
+      String template,
+      Class<H> handler) {
     UrlTemplate urlTemplate = new UrlTemplate(template);
     return path -> {
       UrlTemplate.Match match = urlTemplate.match(path);
