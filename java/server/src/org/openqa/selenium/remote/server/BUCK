@@ -72,6 +72,8 @@ java_library(
     'ActiveSessionListener.java',
     'ActiveSessions.java',
     'AllHandlers.java',
+    'DtrmServicedSession.java',
+    'DtrmLogin.java',
     'CommandHandler.java',
     'DefaultPipeline.java',
     'InMemorySession.java',
@@ -88,6 +90,7 @@ java_library(
   ] + glob(['commandhandler/*.java']),
   provided_deps = [
     '//third_party/java/servlet:javax.servlet-api',
+    '//lib/selenide:selenide'
   ],
   deps = [
     ':server',
