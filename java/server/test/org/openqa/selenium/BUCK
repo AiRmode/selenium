@@ -25,6 +25,7 @@ java_library(
     '//third_party/java/beust:jcommander',
     '//third_party/java/jetty:jetty',
     '//third_party/java/servlet:javax.servlet-api',
+    '//third_party/java/selenide:selenide'
   ],
 )
 

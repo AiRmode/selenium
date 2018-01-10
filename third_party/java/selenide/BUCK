@@ -1,0 +1,15 @@
+prebuilt_jar(
+  name = 'selenide',
+  maven_coords = 'com.codeborne:selenide:jar:4.9.1',
+  binary_jar = 'selenide-4.9.1.jar',
+  source_jar = 'selenide-4.9.1-sources.jar',
+  visibility = [
+    '//java/client/test/com/thoughtworks/...',
+    '//java/client/test/org/openqa/...',
+    '//java/server/src/com/thoughtworks/...',
+    '//java/server/src/org/openqa/...',
+    '//java/server/test/...',
+    '//third_party/java/...',
+    '//third_party/java/jetty:'
+  ],
+)

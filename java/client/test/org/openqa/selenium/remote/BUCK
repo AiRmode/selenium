@@ -37,6 +37,7 @@ java_test(name = 'client-tests',
   ],
   provided_deps = [
     '//third_party/java/servlet:javax.servlet-api',
+    '//third_party/java/selenide:selenide'
   ],
   deps = [
     '//java/client/src/org/openqa/selenium:selenium',

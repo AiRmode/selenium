@@ -34,7 +34,8 @@ public class DtrmServicedSession implements ActiveSession {
 
   @Override
   public void execute(HttpRequest req, HttpResponse resp) throws IOException {
-    new DtrmLogin(servicedSession.getWrappedDriver()).execute(req,resp);
+    System.out.println("dsf");
+    new DtrmLogin(servicedSession.getWrappedDriver()).execute(req, resp);
   }
 
   @Override

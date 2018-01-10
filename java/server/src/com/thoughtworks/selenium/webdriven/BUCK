@@ -14,6 +14,7 @@ java_library(name = 'rc-emulation-servlet',
   ],
   provided_deps = [
     '//third_party/java/servlet:javax.servlet-api',
+    '//third_party/java/selenide:selenide'
   ],
   visibility = [
     '//java/server/src/com/thoughtworks/selenium:leg-rc',

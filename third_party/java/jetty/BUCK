@@ -9,6 +9,7 @@ java_library(
   ],
   deps = [
      '//third_party/java/servlet:javax.servlet-api',
+     '//third_party/java/selenide:selenide'
   ],
   visibility = [
     '//java/client/test/com/thoughtworks/selenium:tests',
@@ -144,7 +145,8 @@ prebuilt_jar(
     ':jetty-http',
     ':jetty-io',
     ':jetty-jmx',
-    '//third_party/java/servlet:javax.servlet-api'
+    '//third_party/java/servlet:javax.servlet-api',
+    '//third_party/java/selenide:selenide'
   ],
 )
 
@@ -165,7 +167,8 @@ prebuilt_jar(
   binary_jar = 'jetty-util-9.4.8.v20171121.jar',
   source_jar = 'jetty-util-9.4.8.v20171121-sources.jar',
   deps = [
-    '//third_party/java/servlet:javax.servlet-api'
+    '//third_party/java/servlet:javax.servlet-api',
+    '//third_party/java/selenide:selenide'
   ],
   visibility = [
     '//third_party/java/websocket:websocket-client',

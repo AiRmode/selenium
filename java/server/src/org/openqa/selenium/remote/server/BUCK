@@ -44,6 +44,7 @@ java_library(name = 'server',
   ],
   provided_deps = [
     '//third_party/java/servlet:javax.servlet-api',
+    '//third_party/java/selenide:selenide'
   ],
   deps = [
     ':sessions',
@@ -90,7 +91,7 @@ java_library(
   ] + glob(['commandhandler/*.java']),
   provided_deps = [
     '//third_party/java/servlet:javax.servlet-api',
-    '//lib/selenide:selenide'
+    '//third_party/java/selenide:selenide'
   ],
   deps = [
     ':server',
@@ -148,6 +149,7 @@ java_library(name = 'standalone-server-lib',
     '//third_party/java/jetty:jetty',
     '//third_party/java/selenium:htmlunit-driver',
     '//third_party/java/servlet:javax.servlet-api',
+    '//third_party/java/selenide:selenide'
   ],
   visibility = [
     '//java/server/src/org/openqa/grid/selenium:classes',
